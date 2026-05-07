@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-pink: #bc13fe;
+  --neon-gold: #ffcc00;
+  --bg-dark: #020205;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: white;
+  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.06),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.06)
+  );
+  z-index: 10;
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+}
+
+.glass {
+  background: rgba(2, 2, 10, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+}
+
+.neon-border {
+  border: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan), inset 0 0 5px var(--neon-cyan);
+}
+
+.neon-text {
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+@keyframes pulse-pink {
+  0%, 100% { opacity: 0.3; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(2) drop-shadow(0 0 15px #bc13fe); }
+}
+
+.animate-pulse-pink {
+  animation: pulse-pink 2s infinite ease-in-out;
+}
+
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
